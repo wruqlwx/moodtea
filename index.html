@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodTea — Чай по настроению</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header class="topbar">
+            <div class="topbar-inner">
+                <span class="brand">🍵 MoodTea</span>
+                <span class="stepper">
+                    <span class="step active" id="step-1">1 · Мои чаи</span>
+                    <span class="step-sep">→</span>
+                    <span class="step" id="step-2">2 · Вопросы</span>
+                    <span class="step-sep">→</span>
+                    <span class="step" id="step-3">3 · Результат</span>
+                </span>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-blob blob-1"></div>
+            <div class="hero-blob blob-2"></div>
+            <div class="hero-content">
+                <div class="logo">🍵</div>
+                <h1>MoodTea</h1>
+                <p class="tagline">Пять коротких вопросов — и подберём чай, который подходит именно твоему настроению</p>
+                <button class="btn btn-primary" onclick="showSection('collection')">Подобрать чай</button>
+            </div>
+        </section>
+
+        <section id="section-collection" class="section hidden">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <h2>Твоя чайная коллекция</h2>
+                        <p class="subtitle">Отметь, какие чаи у тебя есть. Разделено по коллекциям Greenfield — удобно искать.</p>
+                    </div>
+                    <span class="counter" id="select-counter">Выбрано: 0</span>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-secondary" onclick="selectAllTeas()">Выбрать все</button>
+                    <button class="btn btn-ghost" onclick="resetTeas()">Сбросить</button>
+                </div>
+
+                <div id="tea-categories" class="tea-categories"></div>
+
+                <div class="section-actions">
+                    <button class="btn btn-primary" onclick="startQuiz()" id="btn-start-quiz" disabled>Подобрать чай <span class="btn-arrow">→</span></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-quiz" class="section hidden">
+            <div class="container container-narrow">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <p class="progress-text" id="progress-text">Вопрос 1 из 5</p>
+
+                <div class="quiz-card" id="quiz-card">
+                    <h3 id="question-text"></h3>
+                    <div id="answers" class="answers"></div>
+                </div>
+
+                <div class="quiz-footer">
+                    <button class="btn btn-ghost" onclick="showSection('collection')">← К чаям</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-result" class="section hidden">
+            <div class="container container-narrow">
+                <div class="result-card">
+                    <div class="result-hero">
+                        <span class="result-emoji">🫖</span>
+                        <h2>Твой идеальный чай</h2>
+                        <p class="subtitle">Мы учли твоё настроение и выбрали из того, что есть у тебя дома</p>
+                    </div>
+                    <div id="result-teas" class="result-teas"></div>
+                    <div class="result-message" id="result-message"></div>
+                    <div class="section-actions">
+                        <button class="btn btn-secondary" onclick="showSection('collection')">Изменить список чаёв</button>
+                        <button class="btn btn-primary" onclick="restartQuiz()">Пройти заново</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
